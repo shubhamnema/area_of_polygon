@@ -18,11 +18,11 @@ private:
         }
         void addpoint(int fl , float xc , float yc)
         {
-          point* n = new point;
-          n->next = NULL;
-          n->flag = fl;
-          n->x = xc;
-          n->y = yc;
+          point* node = new point;
+          node->next = NULL;
+          node->flag = fl;
+          node->x = xc;
+          node->y = yc;
           if(head !=NULL)
           {
             current = head;
@@ -30,11 +30,11 @@ private:
             {
               current = current->next;
             }
-            current->next = n;
+            current->next = node;
             }
             else
             {
-              head = n;
+              head = node;
             }
 }
 
@@ -51,7 +51,7 @@ private:
 //   }
 // }
 
-int sizeoff()
+int sizeoflist()
 {
   int size = 0;
   current = head;
@@ -66,7 +66,7 @@ int sizeoff()
     return size;
   }
 
-  point* searchfun(int val )
+  point* searchpoint(int val )
   {
     current = head;
     while(current != NULL)

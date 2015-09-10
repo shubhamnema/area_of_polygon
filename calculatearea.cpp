@@ -5,37 +5,28 @@
 class calculatearea
 {
 private:
-  float indi ;
-  float sdf ;
+
+  float totalarea ;
 
 public:
        calculatearea()
       {
-      sdf = 0;
+      totalarea = 0;
       }
 
-       float summ(point* a , point* b)
+       float crossproduct(point* a , point* b)
        {
-        float as, bs , ts;
-        as = a->getxcor() * b->getycor();
-        bs = a->getycor() * b->getxcor();
-        ts = as - bs;
-        return ts;
+
+        return ((a->getxcor() * b->getycor()) - (a->getycor() * b->getxcor()));
        }
 
        float totalareaofpolygon(point listobject)
        {
-         int size = listobject.sizeoff();
-             for (int h = 0 ; h<size ; h++)
+         int size = listobject.sizeoflist();
+             for (int count = 0 ; count<size ; count++)
              {
-                int t;
-                t = ((h+1)%size);
-                indi = summ(listobject.searchfun(h) , listobject.searchfun(t));
-                sdf+=indi;
-              }
-              return std::abs(sdf/2);
-
+               totalarea+=crossproduct(listobject.searchpoint(count) , listobject.searchpoint(((count+1)%size)));
+             }
+              return std::abs(totalarea/2);
         }
-
-
-};
+ };
